@@ -8,7 +8,7 @@ Lean on Claude as you go: ask it to scaffold files, look up current syntax, and 
  
 ### The repository
  
-We've provided a repo for your plugin — this is where you'll assemble and publish it. Build and test it against the course API project you've worked in since the Beginner projects, so your subagents and workflow operate on real code rather than a toy example.
+We've provided a repo for your plugin — this is where you'll assemble and publish it. The same Express API from the earlier projects is included here under course-api/; build and test your plugin against it so your subagents and workflow operate on real code rather than a toy example.
  
 By the end, the provided repo will be two things at once: the plugin itself, and the marketplace that offers it.
  
@@ -51,7 +51,7 @@ Add a command in `commands/` whose body runs your subagents as a workflow. It mu
 Add one skill (`skills/<name>/SKILL.md`) and one hook (`hooks/hooks.json`) that fit your plugin's theme. If the hook runs a bundled script, reference it through `${CLAUDE_PLUGIN_ROOT}` so it resolves wherever the plugin installs — don't hardcode a path.
  
 #### Task 5 — Test it locally.
-Load the plugin with `claude --plugin-dir .` from the repo root and run it against the course API project. Confirm each piece fires by its namespaced name, and that your workflow command orchestrates the subagents in the right order. Use `/reload-plugins` to pick up edits as you refine. Fix anything that doesn't load — start by checking folder placement.
+Load the plugin with `claude --plugin-dir .` from the repo root and run it against the API in  course-api/. Confirm each piece fires by its namespaced name, and that your workflow command orchestrates the subagents in the right order. Use `/reload-plugins` to pick up edits as you refine. Fix anything that doesn't load — start by checking folder placement.
  
 #### Task 6 — Publish it as a marketplace.
 Add `.claude-plugin/marketplace.json` listing your plugin (its `name` matching `plugin.json`, `source: "./"`, a one-line description). Commit and push. Then, as your own first user, run `/plugin marketplace add <your repo>` and `/plugin install <your-plugin>@<your-marketplace>` in a fresh session, and confirm everything installs and runs cleanly.
@@ -69,7 +69,7 @@ Add a `NOTES.md` to the repo covering:
 - [ ] At least two subagents in `agents/`, each with a sharp description, a body that states what to return, a scoped `tools` line, and a fitting `model`.
 - [ ] A workflow command in `commands/` that orchestrates the subagents with at least one parallel step and one dependent step.
 - [ ] A skill in `skills/<name>/SKILL.md` and a hook in `hooks/hooks.json`, both fitting the plugin's theme; any bundled script path uses `${CLAUDE_PLUGIN_ROOT}`.
-- [ ] The plugin loads and runs locally via `--plugin-dir` against the course API project.
+- [ ] The plugin loads and runs locally via  --plugin-dir against the API in course-api/.
 - [ ] `.claude-plugin/marketplace.json` is present and correct, and the plugin installs cleanly via `/plugin marketplace add` + `/plugin install`.
 - [ ] `NOTES.md` covers install steps, one scoping decision, and one orchestration decision.
 - [ ] Everything is committed and pushed.
